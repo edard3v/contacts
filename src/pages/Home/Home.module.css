@@ -1,4 +1,14 @@
 .home {
   display: grid;
   place-content: center;
+
+  .link {
+    text-align: center;
+    border: var(--border);
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
 }
