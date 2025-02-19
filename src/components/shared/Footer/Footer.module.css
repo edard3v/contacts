@@ -1,0 +1,5 @@
+.footer {
+  border-top: var(--border);
+  padding: var(--lg);
+  text-align: center;
+}

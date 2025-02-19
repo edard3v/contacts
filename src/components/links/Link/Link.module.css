@@ -1,0 +1,13 @@
+.link {
+  padding: var(--md) var(--lg);
+  text-decoration: none;
+  border-radius: var(--md);
+
+  &:focus {
+    outline: var(--outline);
+  }
+}
+
+.isActive {
+  outline: var(--border);
+}
