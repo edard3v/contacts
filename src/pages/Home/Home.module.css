@@ -1,6 +1,4 @@
 .home {
   display: grid;
-  gap: var(--lg);
-  place-content: start;
-  place-items: start;
+  place-content: center;
 }
