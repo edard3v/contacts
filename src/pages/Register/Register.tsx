@@ -11,7 +11,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { register_dto, RegisterDto } from "./register_dto";
 import Popup from "@components/pop_ups/Popup/Popup";
 import { useNavigate } from "react-router-dom";
-import { useRegister } from "./useRegister";
+import { useRegisterMut } from "./useRegisterMut";
 import { useEffect, useRef } from "react";
 
 export default function Register() {
@@ -22,7 +22,7 @@ export default function Register() {
     return () => controller_ref.current?.abort();
   }, [controller_ref]);
 
-  const { mutate, isSuccess, isError, isPending, data, error } = useRegister();
+  const { mutate, isSuccess, isError, isPending, data, error } = useRegisterMut();
 
   const {
     register,

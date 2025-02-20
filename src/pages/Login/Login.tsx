@@ -9,7 +9,7 @@ import { REGISTER } from "@pages/Register/config";
 import { useForm } from "react-hook-form";
 import { login_dto, LoginDto } from "./login_dto";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useLogin } from "./useLogin";
+import { useLoginMut } from "./useLoginMut";
 import { useEffect, useRef } from "react";
 
 export default function Login() {
@@ -19,7 +19,7 @@ export default function Login() {
     return () => controller_ref.current?.abort();
   }, [controller_ref]);
 
-  const { mutate, isError, isPending } = useLogin();
+  const { mutate, isError, isPending } = useLoginMut();
 
   const {
     register,

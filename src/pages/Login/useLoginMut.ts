@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { CONTACTS } from "@pages/Contacts/config";
 import { useAuthStore } from "@global_stores/auth/useAuthStore";
 
-export const useLogin = () => {
+export const useLoginMut = () => {
   const update_token = useAuthStore((state) => state.update_token);
   const navigate = useNavigate();
   const mutation = useMutation({
