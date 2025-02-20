@@ -12,13 +12,17 @@ import { register_dto, RegisterDto } from "./register_dto";
 import { useMutation } from "@tanstack/react-query";
 import { register_fetch, RegisterFetch } from "./register_fetch";
 import { useEffect, useRef } from "react";
+import Popup from "@components/pop_ups/Popup/Popup";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const controller_ref = useRef<AbortController | null>(null);
 
-  const { mutate, isPending, isError } = useMutation({
+  const { mutate, isPending, isError, isSuccess, error, data } = useMutation({
     mutationFn: ({ signal, dto }: RegisterFetch) => register_fetch({ signal, dto }),
   });
+
+  const is_popup = isSuccess || isError;
 
   useEffect(() => {
     return () => controller_ref.current?.abort();
@@ -36,10 +40,19 @@ export default function Register() {
     mutate({ signal: controller.signal, dto });
   };
 
+  const navigate = useNavigate();
+
   return (
     <Layout title={REGISTER.display}>
       <main className={css.register}>
         <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
+          {is_popup && (
+            <Popup
+              msg={data?.msg || error?.message}
+              fn={isSuccess ? () => navigate(LOGIN.to) : () => {}}
+            />
+          )}
+
           <Email {...register("email")} err={errors.email?.message} />
           <Password {...register("password")} err={errors.password?.message} />
           <div>

@@ -3,6 +3,7 @@
   place-content: center;
 
   .form {
+    position: relative;
     display: grid;
     gap: var(--lg);
     width: 300px;
