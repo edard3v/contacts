@@ -1,0 +1,7 @@
+.list {
+  height: 100%;
+
+  display: grid;
+  place-content: center;
+  gap: var(--md);
+}
