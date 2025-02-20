@@ -20,10 +20,10 @@ export const useGetContactsStore = create<GetContactsStore>()(
         set({ limit });
       },
       set_name(name) {
-        set({ name });
+        set({ name, page: 1 });
       },
       set_tel(tel) {
-        set({ tel });
+        set({ tel, page: 1 });
       },
       set_total_page(total_page) {
         set({ total_page });
