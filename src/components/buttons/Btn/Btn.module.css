@@ -29,8 +29,8 @@
   .loading {
     width: 25px;
     aspect-ratio: 4;
-    background: radial-gradient(circle closest-side, currentColor 90%, #0000) 0 /
-      calc(100% / 3) 100% space;
+    background: radial-gradient(circle closest-side, currentColor 90%, #0000) 0 / calc(100% / 3)
+      100% space;
     clip-path: inset(0 100% 0 0);
     animation: l1 1s steps(4) infinite;
   }
@@ -40,8 +40,9 @@
     color: var(--red);
     width: 19px;
     height: 19px;
-    top: 0;
+    top: 50%;
     right: 0;
+    transform: translateY(-50%);
   }
 }
 
