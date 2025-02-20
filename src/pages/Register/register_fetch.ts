@@ -1,11 +1,11 @@
-import { Api } from "src/api/api";
-import { Err } from "src/errors/Err";
+import { Api } from "@api/api";
 import { RegisterDto } from "./register_dto";
+import { Err } from "@errors/Err";
 
-export const register_fetch = async (params: Params): Promise<{ msg: string }> => {
+export const register_fetch = async (params: RegisterFetch): Promise<{ msg: string }> => {
   const { signal, dto } = params;
 
-  const res = await fetch(Api.base_url, {
+  const res = await fetch(Api.start_register_url, {
     signal,
     method: "POST",
     headers: {
@@ -21,7 +21,7 @@ export const register_fetch = async (params: Params): Promise<{ msg: string }> =
   return await res.json();
 };
 
-type Params = {
+export type RegisterFetch = {
   signal: AbortSignal;
   dto: RegisterDto;
 };
