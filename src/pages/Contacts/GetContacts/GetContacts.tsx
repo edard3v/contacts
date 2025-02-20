@@ -1,9 +1,14 @@
 import css from "./GetContacts.module.css";
 import ContactCard from "./ContactCard/ContactCard";
 import { useGetContactsQuery } from "./useGetContactsQuery";
+import Paged from "@components/paginations/Paged/Paged";
+import { useGetContactsStore } from "./useGetContactsStore";
 
 export default function GetContacts() {
   const { isLoading, isError, data: contacts } = useGetContactsQuery();
+  const page = useGetContactsStore((state) => state.page);
+  const set_page = useGetContactsStore((state) => state.set_page);
+  const total_page = useGetContactsStore((state) => state.total_page);
 
   if (isLoading) return <div>Cargando...</div>;
   if (isError) return <div>Error</div>;
@@ -13,6 +18,8 @@ export default function GetContacts() {
       {contacts?.records.map((record) => (
         <ContactCard key={record.id} contact_record={record} />
       ))}
+
+      <Paged page={page} total_page={total_page} fn={set_page} />
     </div>
   );
 }

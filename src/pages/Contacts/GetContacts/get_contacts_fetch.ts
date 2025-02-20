@@ -39,7 +39,7 @@ type GetContactsFetch = {
 type Contacts = {
   limit: number;
   page: number;
-  totalPages: number;
+  total_pages: number;
   records: ContactRecord[];
 };
 

@@ -1,0 +1,30 @@
+.paged {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+
+  .back,
+  .next {
+    background-color: var(--bg-surf);
+    color: currentColor;
+    line-height: 30px;
+    border-radius: var(--sm);
+
+    &:hover&:not(:disabled) {
+      transform: scale(1.05);
+    }
+
+    &:disabled {
+      background-color: transparent;
+      cursor: not-allowed;
+      color: var(--grey);
+    }
+  }
+
+  .page {
+    font-size: large;
+    font-weight: bold;
+    min-width: 30px;
+    text-align: center;
+  }
+}
