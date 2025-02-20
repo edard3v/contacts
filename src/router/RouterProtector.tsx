@@ -1,4 +1,4 @@
-import { useAuth } from "@global_states/auth/useAuth";
+import { useAuth } from "@global_stores/auth/useAuth";
 import { LOGIN } from "@pages/Login/config";
 import { Navigate } from "react-router-dom";
 

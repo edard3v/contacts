@@ -36,7 +36,7 @@
       "@errors/*": ["src/errors/*"],
       "@api/*": ["src/api/*"],
       "@enums/*": ["src/enums/*"],
-      "@global_states/*": ["src/global_states/*"]
+      "@global_stores/*": ["src/global_stores/*"]
     }
   },
   "include": ["src"]
