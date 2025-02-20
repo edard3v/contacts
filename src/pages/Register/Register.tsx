@@ -16,15 +16,13 @@ import { useEffect, useRef } from "react";
 
 export default function Register() {
   const controller_ref = useRef<AbortController | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     return () => controller_ref.current?.abort();
   }, [controller_ref]);
 
   const { mutate, isSuccess, isError, isPending, data, error } = useRegister();
-
-  const is_popup = isSuccess || isError;
-  const navigate = useNavigate();
 
   const {
     register,
@@ -42,7 +40,7 @@ export default function Register() {
     <Layout title={REGISTER.display}>
       <main className={css.register}>
         <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
-          {is_popup && (
+          {(isSuccess || isError) && (
             <Popup
               msg={data?.msg || error?.message}
               fn={isSuccess ? () => navigate(LOGIN.to) : () => {}}
