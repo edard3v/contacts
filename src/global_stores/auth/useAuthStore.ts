@@ -13,7 +13,7 @@ type Auth = {
   refresh_token: (signal: AbortSignal) => Promise<void>;
 };
 
-export const useAuth = create<Auth>()(
+export const useAuthStore = create<Auth>()(
   persist(
     devtools((set, get) => ({
       token: null,
@@ -53,7 +53,7 @@ export const useAuth = create<Auth>()(
         }
       },
     })),
-    { name: "auth" } // Esta es la clave en localStorage
+    { name: "auth_store" } // Esta es la clave en localStorage
   )
 );
 

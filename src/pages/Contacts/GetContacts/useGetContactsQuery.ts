@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { get_contacts_fetch } from "./get_contacts_fetch";
-import { useAuth } from "@global_stores/auth/useAuth";
+import { useAuthStore } from "@global_stores/auth/useAuthStore";
 
 export const useGetContactsQuery = () => {
-  const token = useAuth((state) => state.token);
+  const token = useAuthStore((state) => state.token);
 
   const query = useQuery({
     queryKey: ["contacts", { token }],

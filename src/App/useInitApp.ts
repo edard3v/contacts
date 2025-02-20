@@ -1,9 +1,9 @@
-import { useAuth } from "@global_stores/auth/useAuth";
+import { useAuthStore } from "@global_stores/auth/useAuthStore";
 import { useEffect, useState } from "react";
 
 export const useInitApp = () => {
   const [loading, setLoading] = useState(true);
-  const refresh_token = useAuth((state) => state.refresh_token);
+  const refresh_token = useAuthStore((state) => state.refresh_token);
 
   useEffect(() => {
     const controller = new AbortController();
