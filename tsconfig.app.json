@@ -33,7 +33,8 @@
       "@utils/*": ["src/utils/*"],
       "@styles/*": ["src/styles/*"],
       "@errors/*": ["src/errors/*"],
-      "@api/*": ["src/api/*"]
+      "@api/*": ["src/api/*"],
+      "@enums/*": ["src/enums/*"]
     }
   },
   "include": ["src"]

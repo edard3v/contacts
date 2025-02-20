@@ -1,12 +1,12 @@
 import { Api } from "@api/api";
 import { Err } from "@errors/Err";
 
-export const refresh_login_fetch = async (
+export const refresh_token_fetch = async (
   params: RefreshLoginFetch
 ): Promise<{ token: string }> => {
   const { signal, token } = params;
 
-  const res = await fetch(Api.refresh_login_url, {
+  const res = await fetch(Api.refresh_token_url, {
     method: "POST",
     signal,
     headers: {
