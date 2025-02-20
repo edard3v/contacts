@@ -1,9 +1,9 @@
 import Layout from "@layouts/Layout/Layout";
-import { CONTACT } from "./config";
+import { CONTACTS } from "./config";
 
 export default function Contacts() {
   return (
-    <Layout title={CONTACT.display}>
+    <Layout title={CONTACTS.display}>
       <main>
         <h1>📞</h1>
       </main>

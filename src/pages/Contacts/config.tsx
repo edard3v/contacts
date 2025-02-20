@@ -1,7 +1,7 @@
 import RouterProtector from "@router/RouterProtector";
 import Contacts from "./Contacts";
 
-export const CONTACT = {
+export const CONTACTS = {
   id: crypto.randomUUID(),
   path: "contactos",
   to: "/contactos",
