@@ -1,37 +1,39 @@
 import { create } from "zustand";
-import { devtools } from "zustand/middleware";
+import { devtools, persist } from "zustand/middleware";
 import { jwtDecode, JwtPayload } from "jwt-decode";
 import { refresh_token_fetch } from "./refresh_token_fetch";
 import { Role } from "@enums/role";
 
 type Auth = {
-  token: null | string;
+  token: string | null;
 
   remove_token: () => void;
   update_token: (token: string) => void;
-  get_token_payload: () => TokenPayload | void;
+  get_token_payload: () => TokenPayload | undefined;
   refresh_token: (signal: AbortSignal) => Promise<void>;
 };
 
 export const useAuth = create<Auth>()(
-  devtools(
-    (set, get) => ({
+  persist(
+    devtools((set, get) => ({
       token: null,
+
       remove_token: () => {
         set({ token: null });
-        localStorage.removeItem("token");
       },
+
       update_token: (token: string) => {
         set({ token });
-        localStorage.setItem("token", token);
       },
+
       get_token_payload() {
-        const { token } = get();
-        if (!token) return;
+        const token = get().token;
+        if (!token) return undefined;
         return jwtDecode(token);
       },
+
       refresh_token: async (signal: AbortSignal) => {
-        const token = localStorage.getItem("token");
+        const token = get().token; // Tomamos el token directamente del estado
         if (!token) return;
 
         try {
@@ -43,17 +45,14 @@ export const useAuth = create<Auth>()(
           const { update_token } = get();
           if (!is_time_to_refresh) return update_token(token);
 
-          const { token: new_token } = await refresh_token_fetch({
-            signal,
-            token,
-          });
+          const { token: new_token } = await refresh_token_fetch({ signal, token });
           return update_token(new_token);
         } catch {
           return get().remove_token();
         }
       },
-    }),
-    { name: "auth" }
+    })),
+    { name: "auth" } // Esta es la clave en localStorage
   )
 );
 
