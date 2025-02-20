@@ -1,12 +1,12 @@
 import Layout from "@layouts/Layout/Layout";
 import { CONTACTS } from "./config";
-import ContactList from "./ContactList/ContactList";
+import GetContacts from "./GetContacts/GetContacts";
 
 export default function Contacts() {
   return (
     <Layout title={CONTACTS.display}>
       <main>
-        <ContactList />
+        <GetContacts />
       </main>
     </Layout>
   );

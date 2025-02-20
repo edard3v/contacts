@@ -1,15 +1,15 @@
-import css from "./ContactList.module.css";
+import css from "./GetContacts.module.css";
 import ContactCard from "./ContactCard/ContactCard";
-import { useGetContacts } from "./useGetContacts";
+import { useGetContactsQuery } from "./useGetContactsQuery";
 
 export default function GetContacts() {
-  const { isLoading, isError, data: contacts } = useGetContacts();
+  const { isLoading, isError, data: contacts } = useGetContactsQuery();
 
   if (isLoading) return <div>Cargando...</div>;
   if (isError) return <div>Error</div>;
 
   return (
-    <div className={css.list}>
+    <div className={css.contacts}>
       {contacts?.records.map((record) => (
         <ContactCard key={record.id} contact_record={record} />
       ))}
