@@ -8,16 +8,16 @@ import Link from "@components/links/Link/Link";
 import { LOGIN } from "@pages/Login/config";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { start_register_dto, StartRegisterDto } from "./start_register_dto";
+import { register_dto, RegisterDto } from "./register_dto";
 
 export default function Register() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<StartRegisterDto>({ resolver: zodResolver(start_register_dto) });
+  } = useForm<RegisterDto>({ resolver: zodResolver(register_dto) });
 
-  const onSubmit = (register_dto: StartRegisterDto) => {
+  const onSubmit = (register_dto: RegisterDto) => {
     console.log(register_dto);
   };
 
