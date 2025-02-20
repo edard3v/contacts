@@ -1,11 +1,12 @@
 import Layout from "@layouts/Layout/Layout";
 import { CONTACTS } from "./config";
+import ContactList from "./ContactList/ContactList";
 
 export default function Contacts() {
   return (
     <Layout title={CONTACTS.display}>
       <main>
-        <h1>📞</h1>
+        <ContactList />
       </main>
     </Layout>
   );
