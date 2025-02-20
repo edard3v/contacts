@@ -16,6 +16,7 @@ export default defineConfig({
       "@api": "/src/api",
       "@errors": "/src/errors",
       "@enums": "/src/enums",
+      "@global_states": "/src/global_states",
     },
   },
 });

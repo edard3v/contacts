@@ -34,7 +34,8 @@
       "@styles/*": ["src/styles/*"],
       "@errors/*": ["src/errors/*"],
       "@api/*": ["src/api/*"],
-      "@enums/*": ["src/enums/*"]
+      "@enums/*": ["src/enums/*"],
+      "@global_states/*": ["src/global_states/*"]
     }
   },
   "include": ["src"]

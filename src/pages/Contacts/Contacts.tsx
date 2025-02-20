@@ -1,7 +1,7 @@
 import Layout from "@layouts/Layout/Layout";
 import { CONTACT } from "./config";
 
-export default function Contact() {
+export default function Contacts() {
   return (
     <Layout title={CONTACT.display}>
       <main>

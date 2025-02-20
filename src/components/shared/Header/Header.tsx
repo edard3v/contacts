@@ -1,6 +1,6 @@
 import css from "./Header.module.css";
 import Link from "@components/links/Link/Link";
-import { CONTACT } from "@pages/Contact/config";
+import { CONTACT } from "@pages/Contacts/config";
 import { HOME } from "@pages/Home/config";
 
 export default function Header() {
