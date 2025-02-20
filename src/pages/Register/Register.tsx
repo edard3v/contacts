@@ -9,24 +9,22 @@ import { LOGIN } from "@pages/Login/config";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { register_dto, RegisterDto } from "./register_dto";
-import { useMutation } from "@tanstack/react-query";
-import { register_fetch, RegisterFetch } from "./register_fetch";
-import { useEffect, useRef } from "react";
 import Popup from "@components/pop_ups/Popup/Popup";
 import { useNavigate } from "react-router-dom";
+import { useRegister } from "./useRegister";
+import { useEffect, useRef } from "react";
 
 export default function Register() {
   const controller_ref = useRef<AbortController | null>(null);
 
-  const { mutate, isPending, isError, isSuccess, error, data } = useMutation({
-    mutationFn: ({ signal, dto }: RegisterFetch) => register_fetch({ signal, dto }),
-  });
-
-  const is_popup = isSuccess || isError;
-
   useEffect(() => {
     return () => controller_ref.current?.abort();
-  }, []);
+  }, [controller_ref]);
+
+  const { mutate, isSuccess, isError, isPending, data, error } = useRegister();
+
+  const is_popup = isSuccess || isError;
+  const navigate = useNavigate();
 
   const {
     register,
@@ -39,8 +37,6 @@ export default function Register() {
     controller_ref.current = controller;
     mutate({ signal: controller.signal, dto });
   };
-
-  const navigate = useNavigate();
 
   return (
     <Layout title={REGISTER.display}>
