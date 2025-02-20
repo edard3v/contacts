@@ -11,7 +11,7 @@ export const refresh_token_fetch = async (
     signal,
     headers: {
       "Content-Type": "application/json",
-      Authorization: token,
+      Authorization: `Bearer ${token}`,
     },
   });
 

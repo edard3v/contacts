@@ -20,6 +20,7 @@ export const useAuth = create<Auth>()(
 
       remove_token: () => {
         set({ token: null });
+        localStorage.removeItem("auth");
       },
 
       update_token: (token: string) => {
@@ -33,7 +34,7 @@ export const useAuth = create<Auth>()(
       },
 
       refresh_token: async (signal: AbortSignal) => {
-        const token = get().token; // Tomamos el token directamente del estado
+        const token = get().token;
         if (!token) return;
 
         try {

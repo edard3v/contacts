@@ -25,6 +25,7 @@
     /* Alias */
     "baseUrl": "./",
     "paths": {
+      "@App/*": ["src/App/*"],
       "@pages/*": ["src/pages/*"],
       "@router/*": ["src/router/*"],
       "@components/*": ["src/components/*"],
