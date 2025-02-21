@@ -10,6 +10,7 @@ export const useGetContactsQuery = () => {
   const name = useGetContactsStore((state) => state.name);
   const tel = useGetContactsStore((state) => state.tel);
   const page = useGetContactsStore((state) => state.page);
+  const set_page = useGetContactsStore((state) => state.set_page);
   const set_records = useGetContactsStore((state) => state.set_records);
   const set_total_page = useGetContactsStore((state) => state.set_total_page);
 
@@ -19,6 +20,15 @@ export const useGetContactsQuery = () => {
     queryKey: ["contacts", { token, ...dto }],
     queryFn: ({ signal }) => get_contacts_fetch({ signal, token, dto }),
     enabled: !!token,
+    retry: (failureCount, error) => {
+      if (failureCount >= 2) return false;
+
+      if (error.message === "No existe esta página" && failureCount >= 1) {
+        set_page(page - 1);
+      }
+
+      return true;
+    },
   });
 
   useEffect(() => {
