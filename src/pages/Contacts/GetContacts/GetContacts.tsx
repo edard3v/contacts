@@ -6,6 +6,7 @@ import { useGetContactsStore } from "./useGetContactsStore";
 import Search from "@components/inputs/Search/Search";
 import Btn from "@components/buttons/Btn/Btn";
 import Loading from "@components/loaders/Loading/Loading";
+import { ContactForm, useContactStore } from "../useContactStore";
 
 export default function GetContacts() {
   const { isLoading, isError, data: contacts, error } = useGetContactsQuery();
@@ -14,10 +15,16 @@ export default function GetContacts() {
   const total_page = useGetContactsStore((state) => state.total_page);
   const set_name = useGetContactsStore((state) => state.set_name);
   const name = useGetContactsStore((state) => state.name);
+  const set_active_form = useContactStore((state) => state.set_active_form);
+  const active_form = useContactStore((state) => state.active_form);
 
   return (
     <div className={css.get_contacts}>
-      <Btn className={css.add}>Agregar</Btn>
+      {active_form !== ContactForm.Add && (
+        <Btn className={css.add} onClick={() => set_active_form(ContactForm.Add)}>
+          Agregar
+        </Btn>
+      )}
 
       <Search placeholder="Nombre" fn={set_name} defaultValue={name} />
 

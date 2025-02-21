@@ -1,0 +1,7 @@
+.text {
+  position: relative;
+
+  .inputErr {
+    outline: var(--err-outline);
+  }
+}
