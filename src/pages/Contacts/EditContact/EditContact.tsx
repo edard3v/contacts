@@ -15,6 +15,7 @@ export default function EditContact() {
   const deactive_contact_form = useContactStore((state) => state.deactive_contact_form);
   const token = useAuthStore((state) => state.token);
   const contact = useContactStore((state) => state.contact);
+  const set_contact_name = useContactStore((state) => state.set_contact_name);
   const { mutate, isPending, isError } = useEditContactMut();
 
   const {
@@ -37,7 +38,11 @@ export default function EditContact() {
 
   return (
     <form className={css.form} onSubmit={handleSubmit(edit_contact)}>
-      <Text placeholder="Nombre" />
+      <Text
+        placeholder="Nombre"
+        value={contact?.name}
+        onChange={(e) => set_contact_name(e.target.value.toLocaleLowerCase())}
+      />
       <Tel country={country} tel={tel} err={errors.tel?.message} />
       <div className={css.btns}>
         <Btn className={css.confirm} disabled={isPending} loading={isPending} err={isError}>
