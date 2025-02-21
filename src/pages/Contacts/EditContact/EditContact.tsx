@@ -8,7 +8,8 @@ import { useForm } from "react-hook-form";
 import { edit_contact_dto, EditContactDto } from "./edit_contact_dto";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAuthStore } from "@global_stores/auth/useAuthStore";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import { Country } from "@enums/Country";
 
 export default function EditContact() {
   const controller_ref = useRef<AbortController | null>(null);
@@ -20,6 +21,15 @@ export default function EditContact() {
   const set_contact_country = useContactStore((state) => state.set_contact_country);
   const { mutate, isPending, isError } = useEditContactMut();
 
+  const initial_contact_ref = useRef<{ name: string; country: Country; tel: number } | null>(null);
+
+  useEffect(() => {
+    if (contact && !initial_contact_ref.current) {
+      const { name, country, tel } = contact;
+      initial_contact_ref.current = { name, country, tel };
+    }
+  }, [contact]);
+
   const {
     register,
     handleSubmit,
@@ -28,6 +38,15 @@ export default function EditContact() {
 
   const edit_contact = (dto: EditContactDto) => {
     if (!token || !contact) return;
+
+    const initial_contact = initial_contact_ref.current;
+    if (
+      dto.country === initial_contact?.country &&
+      dto.name === initial_contact.name &&
+      dto.tel === initial_contact.tel
+    )
+      return;
+
     const controller = new AbortController();
     const { id } = contact;
 
