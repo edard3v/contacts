@@ -7,7 +7,7 @@ export const edit_contact_fetch = async (params: EditContactFetch): Promise<{ ms
 
   const res = await fetch(Api.edit_contact_url(contact_id), {
     signal,
-    method: "POST",
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,

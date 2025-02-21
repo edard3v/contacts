@@ -17,6 +17,7 @@ export default function EditContact() {
   const contact = useContactStore((state) => state.contact);
   const set_contact_name = useContactStore((state) => state.set_contact_name);
   const set_contact_tel = useContactStore((state) => state.set_contact_tel);
+  const set_contact_country = useContactStore((state) => state.set_contact_country);
   const { mutate, isPending, isError } = useEditContactMut();
 
   const {
@@ -37,12 +38,16 @@ export default function EditContact() {
   return (
     <form className={css.form} onSubmit={handleSubmit(edit_contact)}>
       <Text
+        {...register("name")}
         placeholder="Nombre"
         value={contact?.name}
         onChange={(e) => set_contact_name(e.target.value.toLocaleLowerCase())}
       />
       <Tel
         register_country={register("country")}
+        value_country={contact?.country}
+        on_change_country={set_contact_country}
+        // -----
         {...register("tel")}
         value={contact?.tel}
         onChange={(e) => set_contact_tel(Number(e.target.value))}
