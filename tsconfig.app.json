@@ -36,7 +36,8 @@
       "@errors/*": ["src/errors/*"],
       "@api/*": ["src/api/*"],
       "@enums/*": ["src/enums/*"],
-      "@global_stores/*": ["src/global_stores/*"]
+      "@global_stores/*": ["src/global_stores/*"],
+      "@regex/*": ["src/regex/*"]
     }
   },
   "include": ["src"]

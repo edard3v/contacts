@@ -10,6 +10,7 @@
   .records {
     position: relative;
     display: grid;
+    align-content: start;
     gap: var(--sm);
     min-height: 300px;
 

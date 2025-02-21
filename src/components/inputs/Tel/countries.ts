@@ -1,18 +1,8 @@
+import { Country } from "@enums/Country";
+
 export const COUNTRIES = [
-  { code: "CO", name: "Colombia", dial_code: "57", flag: "🇨🇴" },
-  { code: "AR", name: "Argentina", dial_code: "54", flag: "🇦🇷" },
-  { code: "CR", name: "Costa Rica", dial_code: "506", flag: "🇨🇷" },
-  { code: "CL", name: "Chile", dial_code: "56", flag: "🇨🇱" },
-  { code: "DO", name: "Dominican Republic", dial_code: "1", flag: "🇩🇴" },
-  { code: "SV", name: "El Salvador", dial_code: "503", flag: "🇸🇻" },
-  { code: "ES", name: "Spain", dial_code: "34", flag: "🇪🇸" },
-  { code: "GT", name: "Guatemala", dial_code: "502", flag: "🇬🇹" },
-  { code: "MX", name: "Mexico", dial_code: "52", flag: "🇲🇽" },
-  { code: "PA", name: "Panama", dial_code: "507", flag: "🇵🇦" },
-  { code: "PR", name: "Puerto Rico", dial_code: "1", flag: "🇵🇷" },
-  { code: "VE", name: "Venezuela", dial_code: "58", flag: "🇻🇪" },
-  { code: "US", name: "United States", dial_code: "1", flag: "🇺🇸" },
-  { code: "GB", name: "United Kingdom", dial_code: "44", flag: "🇬🇧" },
-  { code: "DE", name: "Germany", dial_code: "49", flag: "🇩🇪" },
-  { code: "FR", name: "France", dial_code: "33", flag: "🇫🇷" },
+  { code: "CO", name: "Colombia", dial_code: Country.Colombia, flag: "🇨🇴" },
+  { code: "AR", name: "Argentina", dial_code: Country.Argentina, flag: "🇦🇷" },
+  { code: "MX", name: "Mexico", dial_code: Country.Mexico, flag: "🇲🇽" },
+  { code: "ES", name: "Spain", dial_code: Country.España, flag: "🇪🇸" },
 ];

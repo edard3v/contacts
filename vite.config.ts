@@ -18,6 +18,7 @@ export default defineConfig({
       "@errors": "/src/errors",
       "@enums": "/src/enums",
       "@global_stores": "/src/global_stores",
+      "@regex": "/src/regex",
     },
   },
 });

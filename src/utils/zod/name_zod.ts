@@ -1,5 +1,5 @@
+import { REGEX } from "@regex/regex";
 import { z } from "zod";
-import { REGEX } from "../../regex/regex.ts";
 
 export const name_zod = z
   .string()
