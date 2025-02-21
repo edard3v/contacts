@@ -5,11 +5,11 @@ import { InputHTMLAttributes } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
 
 export default function Tel(props: Props) {
-  const { className, err, country, tel, ...rest } = props;
+  const { className, err, register_country, ...rest } = props;
 
   return (
     <label className={cls([css.tel, className])}>
-      <select {...country}>
+      <select {...register_country}>
         {COUNTRIES.map((country) => (
           <option key={country.dial_code} value={country.dial_code}>
             {country.flag}
@@ -17,7 +17,6 @@ export default function Tel(props: Props) {
         ))}
       </select>
       <input
-        {...tel}
         {...rest}
         id="num"
         type="number"
@@ -31,6 +30,5 @@ export default function Tel(props: Props) {
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   err?: string;
-  country?: UseFormRegisterReturn<"country">;
-  tel?: UseFormRegisterReturn<"tel">;
+  register_country?: UseFormRegisterReturn<"country">;
 }

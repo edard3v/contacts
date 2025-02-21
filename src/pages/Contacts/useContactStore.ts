@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 import { ContactRecord } from "./GetContacts/get_contacts_fetch";
+import { Country } from "@enums/Country";
 
 export const useContactStore = create<ContactStore>()(
   devtools(
@@ -29,6 +30,18 @@ export const useContactStore = create<ContactStore>()(
         if (!contact) return;
         set({ contact: { ...contact, name } });
       },
+
+      set_contact_country(country) {
+        const { contact } = get();
+        if (!contact) return;
+        set({ contact: { ...contact, country } });
+      },
+
+      set_contact_tel(tel) {
+        const { contact } = get();
+        if (!contact) return;
+        set({ contact: { ...contact, tel } });
+      },
     }),
     { name: "contact_store" }
   )
@@ -44,6 +57,8 @@ type ContactStore = {
   deactive_contact_form: () => void;
 
   set_contact_name: (name: string) => void;
+  set_contact_country: (name: Country) => void;
+  set_contact_tel: (name: number) => void;
 };
 
 export enum ContactForm {

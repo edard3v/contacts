@@ -30,13 +30,10 @@ export default function AddContact() {
     mutate({ signal: controller.signal, token, dto });
   };
 
-  const country = register("country");
-  const tel = register("tel");
-
   return (
     <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
       <Text placeholder="Nombre" {...register("name")} err={errors.name?.message} />
-      <Tel country={country} tel={tel} err={errors.tel?.message} />
+      <Tel register_country={register("country")} {...register("tel")} err={errors.tel?.message} />
       <div className={css.btns}>
         <Btn className={css.confirm} disabled={isPending} loading={isPending} err={isError}>
           Crear

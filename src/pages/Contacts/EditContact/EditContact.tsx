@@ -33,9 +33,6 @@ export default function EditContact() {
     mutate({ signal: controller.signal, token, contact_id: id as UUID, dto });
   };
 
-  const country = register("country");
-  const tel = register("tel");
-
   return (
     <form className={css.form} onSubmit={handleSubmit(edit_contact)}>
       <Text
@@ -43,7 +40,7 @@ export default function EditContact() {
         value={contact?.name}
         onChange={(e) => set_contact_name(e.target.value.toLocaleLowerCase())}
       />
-      <Tel country={country} tel={tel} err={errors.tel?.message} />
+      <Tel register_country={register("country")} {...register("tel")} err={errors.tel?.message} />
       <div className={css.btns}>
         <Btn className={css.confirm} disabled={isPending} loading={isPending} err={isError}>
           Actualizar
