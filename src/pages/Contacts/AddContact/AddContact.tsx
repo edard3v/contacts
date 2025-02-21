@@ -15,7 +15,7 @@ export default function AddContact() {
   const set_active_form = useContactStore((state) => state.set_active_form);
   const token = useAuthStore((state) => state.token);
 
-  const { mutate } = useAddContactMut();
+  const { mutate, isPending, isError } = useAddContactMut();
 
   const {
     register,
@@ -38,7 +38,9 @@ export default function AddContact() {
       <Text placeholder="Nombre" {...register("name")} err={errors.name?.message} />
       <Tel country={country} tel={tel} err={errors.tel?.message} />
       <div className={css.btns}>
-        <Btn className={css.confir}>Confirmar</Btn>
+        <Btn className={css.confir} disabled={isPending} loading={isPending} err={isError}>
+          Confirmar
+        </Btn>
         <Btn className={css.cancel} type="button" onClick={() => set_active_form(ContactForm.None)}>
           Cancelar
         </Btn>
