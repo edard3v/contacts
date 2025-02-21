@@ -1,0 +1,22 @@
+.form {
+  border: var(--border);
+  padding: var(--lg);
+  border-radius: var(--md);
+  max-width: 1400px;
+
+  display: grid;
+  gap: var(--md);
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  justify-items: start;
+
+  .btns {
+    display: flex;
+    gap: var(--sm);
+
+    button {
+      min-width: 110px;
+    }
+  }
+}

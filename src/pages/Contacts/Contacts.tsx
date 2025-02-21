@@ -5,6 +5,7 @@ import GetContacts from "./GetContacts/GetContacts";
 import AddContact from "./AddContact/AddContact";
 import { ContactForm, useContactStore } from "./useContactStore";
 import RemoveContact from "./RemoveContact/RemoveContact";
+import EditContact from "./EditContact/EditContact";
 
 export default function Contacts() {
   const contact_form = useContactStore((state) => state.contact_form);
@@ -14,6 +15,7 @@ export default function Contacts() {
       <main className={css.contacts}>
         {contact_form === ContactForm.Add && <AddContact />}
         {contact_form === ContactForm.Remove && <RemoveContact />}
+        {contact_form === ContactForm.Edit && <EditContact />}
         <GetContacts />
       </main>
     </Layout>

@@ -39,7 +39,7 @@ export default function AddContact() {
       <Tel country={country} tel={tel} err={errors.tel?.message} />
       <div className={css.btns}>
         <Btn className={css.confirm} disabled={isPending} loading={isPending} err={isError}>
-          Confirmar
+          Crear
         </Btn>
         <Btn className={css.cancel} type="button" onClick={() => deactive_contact_form()}>
           Cancelar

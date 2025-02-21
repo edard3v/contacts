@@ -17,11 +17,12 @@ export default function GetContacts() {
   const name = useGetContactsStore((state) => state.name);
   const active_add_contact_form = useContactStore((state) => state.active_add_contact_form);
   const active_remove_contact_form = useContactStore((state) => state.active_remove_contact_form);
+  const active_edit_contact_form = useContactStore((state) => state.active_edit_contact_form);
   const contact_form = useContactStore((state) => state.contact_form);
 
   return (
     <div className={css.get_contacts}>
-      {contact_form !== ContactForm.Add && (
+      {contact_form === ContactForm.None && (
         <Btn className={css.add} onClick={() => active_add_contact_form()}>
           Agregar
         </Btn>
@@ -38,6 +39,7 @@ export default function GetContacts() {
             key={record.id}
             contact_record={record}
             fn_btn_remove={active_remove_contact_form}
+            fn_btn_edit={active_edit_contact_form}
           />
         ))}
       </div>
