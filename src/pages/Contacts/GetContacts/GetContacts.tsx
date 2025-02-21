@@ -33,7 +33,11 @@ export default function GetContacts() {
         {isError && <div className={css.err}>{error.message}</div>}
 
         {contacts?.records.map((record) => (
-          <ContactCard key={record.id} contact_record={record} />
+          <ContactCard
+            key={record.id}
+            contact_record={record}
+            fn_open_remove_form={() => set_active_form(ContactForm.Remove)}
+          />
         ))}
       </div>
 
