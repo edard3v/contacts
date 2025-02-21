@@ -31,6 +31,6 @@ export default function Tel(props: Props) {
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   err?: string;
-  country: UseFormRegisterReturn<"country">;
-  tel: UseFormRegisterReturn<"tel">;
+  country?: UseFormRegisterReturn<"country">;
+  tel?: UseFormRegisterReturn<"tel">;
 }

@@ -1,6 +1,7 @@
 import { Api } from "@api/api";
 import { Err } from "@errors/Err";
 import { GetContactsDto } from "./get_contacts_dto";
+import { Country } from "@enums/Country";
 
 export const get_contacts_fetch = async (params: GetContactsFetch): Promise<Contacts> => {
   const { signal, token, dto = {} } = params;
@@ -47,7 +48,7 @@ export type ContactRecord = {
   id: string;
   name: string;
   tel: number;
-  country: number;
+  country: Country;
   created_at: string | null;
   updated_at: string | null;
 };

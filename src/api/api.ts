@@ -7,4 +7,5 @@ export class Api {
   static get_contacts_url = `${this.base_url}/get_contacts`;
   static add_contact_url = `${this.base_url}/add_contact`;
   static remove_contact_url = (id: UUID) => `${this.base_url}/remove_contact/${id}`;
+  static edit_contact_url = (id: UUID) => `${this.base_url}/edit_contact/${id}`;
 }
