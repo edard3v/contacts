@@ -1,15 +1,18 @@
 import Btn from "@components/buttons/Btn/Btn";
 import css from "./RemoveContact.module.css";
-import { ContactForm, useContactStore } from "../useContactStore";
+import { useContactStore } from "../useContactStore";
+import { capitalize } from "@utils/capitalize";
 
 export default function RemoveContact() {
-  const set_active_form = useContactStore((state) => state.set_active_form);
+  const deactive_contact_form = useContactStore((state) => state.deactive_contact_form);
+  const contact = useContactStore((state) => state.contact);
+
   return (
     <form className={css.form}>
-      <h6>¿Estás seguro que deseas eliminar a X?</h6>
+      <h6>¿Estás seguro que deseas eliminar a {contact?.name && capitalize(contact?.name)}</h6>
       <div className={css.btns}>
         <Btn className={css.confirm}>Confirmar</Btn>
-        <Btn className={css.cancel} type="button" onClick={() => set_active_form(ContactForm.None)}>
+        <Btn className={css.cancel} type="button" onClick={() => deactive_contact_form()}>
           Cancelar
         </Btn>
       </div>

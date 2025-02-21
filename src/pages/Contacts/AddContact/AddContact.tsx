@@ -1,6 +1,6 @@
 import css from "./AddContact.module.css";
 import Text from "@components/inputs/Text/Text";
-import { ContactForm, useContactStore } from "../useContactStore";
+import { useContactStore } from "../useContactStore";
 import Btn from "@components/buttons/Btn/Btn";
 import Tel from "@components/inputs/Tel/Tel";
 import { useForm } from "react-hook-form";
@@ -12,7 +12,7 @@ import { useRef } from "react";
 
 export default function AddContact() {
   const controller_ref = useRef<AbortController | null>(null);
-  const set_active_form = useContactStore((state) => state.set_active_form);
+  const deactive_contact_form = useContactStore((state) => state.deactive_contact_form);
   const token = useAuthStore((state) => state.token);
 
   const { mutate, isPending, isError } = useAddContactMut();
@@ -41,7 +41,7 @@ export default function AddContact() {
         <Btn className={css.confirm} disabled={isPending} loading={isPending} err={isError}>
           Confirmar
         </Btn>
-        <Btn className={css.cancel} type="button" onClick={() => set_active_form(ContactForm.None)}>
+        <Btn className={css.cancel} type="button" onClick={() => deactive_contact_form()}>
           Cancelar
         </Btn>
       </div>

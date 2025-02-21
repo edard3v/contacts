@@ -7,13 +7,13 @@ import { ContactForm, useContactStore } from "./useContactStore";
 import RemoveContact from "./RemoveContact/RemoveContact";
 
 export default function Contacts() {
-  const active_form = useContactStore((state) => state.active_form);
+  const contact_form = useContactStore((state) => state.contact_form);
 
   return (
     <Layout title={CONTACTS.display}>
       <main className={css.contacts}>
-        {active_form === ContactForm.Add && <AddContact />}
-        {active_form === ContactForm.Remove && <RemoveContact />}
+        {contact_form === ContactForm.Add && <AddContact />}
+        {contact_form === ContactForm.Remove && <RemoveContact />}
         <GetContacts />
       </main>
     </Layout>

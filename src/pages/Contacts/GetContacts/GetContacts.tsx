@@ -15,13 +15,14 @@ export default function GetContacts() {
   const total_page = useGetContactsStore((state) => state.total_page);
   const set_name = useGetContactsStore((state) => state.set_name);
   const name = useGetContactsStore((state) => state.name);
-  const set_active_form = useContactStore((state) => state.set_active_form);
-  const active_form = useContactStore((state) => state.active_form);
+  const active_add_contact_form = useContactStore((state) => state.active_add_contact_form);
+  const active_remove_contact_form = useContactStore((state) => state.active_remove_contact_form);
+  const contact_form = useContactStore((state) => state.contact_form);
 
   return (
     <div className={css.get_contacts}>
-      {active_form !== ContactForm.Add && (
-        <Btn className={css.add} onClick={() => set_active_form(ContactForm.Add)}>
+      {contact_form !== ContactForm.Add && (
+        <Btn className={css.add} onClick={() => active_add_contact_form()}>
           Agregar
         </Btn>
       )}
@@ -36,7 +37,7 @@ export default function GetContacts() {
           <ContactCard
             key={record.id}
             contact_record={record}
-            fn_open_remove_form={() => set_active_form(ContactForm.Remove)}
+            fn_btn_remove={active_remove_contact_form}
           />
         ))}
       </div>
