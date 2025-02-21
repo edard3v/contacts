@@ -4,6 +4,7 @@ import { useGetContactsQuery } from "./useGetContactsQuery";
 import Paged from "@components/paginations/Paged/Paged";
 import { useGetContactsStore } from "./useGetContactsStore";
 import Search from "@components/inputs/Search/Search";
+import Btn from "@components/buttons/Btn/Btn";
 
 export default function GetContacts() {
   const { isLoading, isError, data: contacts, error } = useGetContactsQuery();
@@ -17,6 +18,8 @@ export default function GetContacts() {
 
   return (
     <div className={css.get_contacts}>
+      <Btn className={css.add}>Agregar</Btn>
+
       <Search placeholder="Nombre" fn={set_name} defaultValue={name} />
 
       {isError && <div>{error.message}</div>}

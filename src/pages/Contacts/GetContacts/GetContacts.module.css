@@ -1,6 +1,13 @@
 .get_contacts {
-  height: 100%;
   display: grid;
   align-content: start;
   gap: var(--sm);
+  max-width: 1400px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
+  .add {
+    justify-self: start;
+  }
 }

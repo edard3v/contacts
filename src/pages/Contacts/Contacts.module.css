@@ -1,9 +1,0 @@
-.contacts {
-  display: grid;
-  gap: var(--lg);
-  align-content: start;
-
-  .add {
-    justify-self: start;
-  }
-}
