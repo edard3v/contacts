@@ -4,12 +4,22 @@
   border-radius: var(--sm);
 
   display: grid;
+  gap: var(--md);
   justify-items: center;
-  grid-template-columns: 1fr 10% 1fr 10% 10%;
+  grid-template-columns: 1fr auto 0.5fr auto auto;
   min-width: 310px;
 
   .name {
     justify-self: start;
     text-transform: capitalize;
+  }
+
+  .tel {
+    justify-self: start;
+  }
+
+  .edit,
+  .remove {
+    background-color: transparent;
   }
 }

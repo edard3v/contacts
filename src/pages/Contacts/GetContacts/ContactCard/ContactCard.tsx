@@ -5,10 +5,10 @@ export default function ContactCard({ contact_record }: Props) {
   return (
     <article className={css.card}>
       <div className={css.name}>{contact_record.name}</div>
-      <div>{contact_record.country}</div>
-      <div>{contact_record.tel}</div>
-      <div>🔧</div>
-      <div>🗑️</div>
+      <div>+{contact_record.country}</div>
+      <div className={css.tel}>{contact_record.tel}</div>
+      <button className={css.edit}>🔧</button>
+      <button className={css.remove}>🗑️</button>
     </article>
   );
 }

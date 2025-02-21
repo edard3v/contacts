@@ -1,7 +1,6 @@
-.contacts {
+.get_contacts {
   height: 100%;
-
   display: grid;
-  place-content: center;
-  gap: var(--md);
+  align-content: start;
+  gap: var(--sm);
 }

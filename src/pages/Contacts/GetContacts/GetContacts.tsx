@@ -16,7 +16,7 @@ export default function GetContacts() {
   if (isLoading) return <div className={css.contacts}>Cargando...</div>;
 
   return (
-    <div className={css.contacts}>
+    <div className={css.get_contacts}>
       <Search placeholder="Nombre" fn={set_name} defaultValue={name} />
 
       {isError && <div>{error.message}</div>}
