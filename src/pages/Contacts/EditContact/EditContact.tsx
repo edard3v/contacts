@@ -16,9 +16,6 @@ export default function EditContact() {
   const deactive_contact_form = useContactStore((state) => state.deactive_contact_form);
   const token = useAuthStore((state) => state.token);
   const contact = useContactStore((state) => state.contact);
-  const set_contact_name = useContactStore((state) => state.set_contact_name);
-  const set_contact_tel = useContactStore((state) => state.set_contact_tel);
-  const set_contact_country = useContactStore((state) => state.set_contact_country);
   const { mutate, isPending, isError } = useEditContactMut();
 
   const initial_contact_ref = useRef<{ name: string; country: Country; tel: number } | null>(null);
@@ -34,7 +31,10 @@ export default function EditContact() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<EditContactDto>({ resolver: zodResolver(edit_contact_dto) });
+  } = useForm<EditContactDto>({
+    resolver: zodResolver(edit_contact_dto),
+    defaultValues: { country: contact?.country, name: contact?.name, tel: contact?.tel },
+  });
 
   const edit_contact = (dto: EditContactDto) => {
     if (!token || !contact) return;
@@ -51,25 +51,17 @@ export default function EditContact() {
     const { id } = contact;
 
     controller_ref.current = controller;
+
     mutate({ signal: controller.signal, token, contact_id: id as UUID, dto });
   };
 
   return (
     <form className={css.form} onSubmit={handleSubmit(edit_contact)}>
-      <Text
-        {...register("name")}
-        placeholder="Nombre"
-        value={contact?.name}
-        onChange={(e) => set_contact_name(e.target.value.toLocaleLowerCase())}
-      />
+      <Text {...register("name")} placeholder="Nombre" err={errors.name?.message} />
       <Tel
         register_country={register("country")}
-        value_country={contact?.country}
-        on_change_country={set_contact_country}
         // -----
         {...register("tel")}
-        value={contact?.tel}
-        onChange={(e) => set_contact_tel(Number(e.target.value))}
         err={errors.tel?.message}
       />
       <div className={css.btns}>

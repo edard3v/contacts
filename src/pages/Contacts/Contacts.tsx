@@ -9,13 +9,14 @@ import EditContact from "./EditContact/EditContact";
 
 export default function Contacts() {
   const contact_form = useContactStore((state) => state.contact_form);
+  const contact = useContactStore((state) => state.contact);
 
   return (
     <Layout title={CONTACTS.display}>
       <main className={css.contacts}>
         {contact_form === ContactForm.Add && <AddContact />}
         {contact_form === ContactForm.Remove && <RemoveContact />}
-        {contact_form === ContactForm.Edit && <EditContact />}
+        {contact_form === ContactForm.Edit && <EditContact key={contact?.id} />}
         <GetContacts />
       </main>
     </Layout>
