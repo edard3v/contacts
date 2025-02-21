@@ -5,4 +5,5 @@ export class Api {
   static refresh_token_url = `${this.base_url}/refresh_token`;
 
   static get_contacts_url = `${this.base_url}/get_contacts`;
+  static add_contact_url = `${this.base_url}/add_contact`;
 }
