@@ -1,0 +1,36 @@
+.tel {
+  display: flex;
+  gap: var(--sm);
+
+  /* Para WebKit (Chrome, Safari, Edge) */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Para Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+
+  .input_err {
+    outline: var(--err-outline);
+  }
+
+  select {
+    padding: 0 var(--md);
+    background-color: var(--bg-surf);
+    border: var(--border);
+    min-height: var(--h-input);
+    min-width: 65px;
+    border-radius: var(--md);
+    color: inherit;
+    font-size: 1.4rem;
+
+    &:focus {
+      outline: var(--outline);
+    }
+  }
+}

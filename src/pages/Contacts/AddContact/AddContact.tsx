@@ -2,12 +2,14 @@ import css from "./AddContact.module.css";
 import Text from "@components/inputs/Text/Text";
 import { ContactForm, useContactStore } from "../useContactStore";
 import Btn from "@components/buttons/Btn/Btn";
+import Tel from "@components/inputs/Tel/Tel";
 
 export default function AddContact() {
   const set_active_form = useContactStore((state) => state.set_active_form);
   return (
     <form className={css.form}>
       <Text placeholder="Nombre" />
+      <Tel />
       <div className={css.btns}>
         <Btn className={css.confir} type="button">
           Confirmar
