@@ -16,6 +16,7 @@ export default function EditContact() {
   const token = useAuthStore((state) => state.token);
   const contact = useContactStore((state) => state.contact);
   const set_contact_name = useContactStore((state) => state.set_contact_name);
+  const set_contact_tel = useContactStore((state) => state.set_contact_tel);
   const { mutate, isPending, isError } = useEditContactMut();
 
   const {
@@ -40,7 +41,13 @@ export default function EditContact() {
         value={contact?.name}
         onChange={(e) => set_contact_name(e.target.value.toLocaleLowerCase())}
       />
-      <Tel register_country={register("country")} {...register("tel")} err={errors.tel?.message} />
+      <Tel
+        register_country={register("country")}
+        {...register("tel")}
+        value={contact?.tel}
+        onChange={(e) => set_contact_tel(Number(e.target.value))}
+        err={errors.tel?.message}
+      />
       <div className={css.btns}>
         <Btn className={css.confirm} disabled={isPending} loading={isPending} err={isError}>
           Actualizar
