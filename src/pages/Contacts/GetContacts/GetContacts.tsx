@@ -9,7 +9,7 @@ import Loading from "@components/loaders/Loading/Loading";
 import { ContactForm, useContactStore } from "../useContactStore";
 
 export default function GetContacts() {
-  const { isLoading, isError, data: contacts, error } = useGetContactsQuery();
+  const { isLoading, is_first_loading, isError, data: contacts, error } = useGetContactsQuery();
   const page = useGetContactsStore((state) => state.page);
   const set_page = useGetContactsStore((state) => state.set_page);
   const total_page = useGetContactsStore((state) => state.total_page);
@@ -31,7 +31,7 @@ export default function GetContacts() {
       <Search placeholder="Nombre" fn={set_name} defaultValue={name} />
 
       <div className={css.records}>
-        {isLoading && <Loading />}
+        {isLoading && is_first_loading && <Loading />}
         {isError && <div className={css.err}>{error.message}</div>}
 
         {contacts?.records.map((record) => (

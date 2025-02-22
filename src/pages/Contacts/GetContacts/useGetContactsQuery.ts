@@ -2,9 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import { get_contacts_fetch } from "./get_contacts_fetch";
 import { useAuthStore } from "@global_stores/auth/useAuthStore";
 import { useGetContactsStore } from "./useGetContactsStore";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const useGetContactsQuery = () => {
+  const [is_first_loading, set_is_first_loading] = useState(true);
   const token = useAuthStore((state) => state.token);
   const limit = useGetContactsStore((state) => state.limit);
   const name = useGetContactsStore((state) => state.name);
@@ -33,10 +34,11 @@ export const useGetContactsQuery = () => {
 
   useEffect(() => {
     if (query.data) {
+      set_is_first_loading(false);
       set_records(query.data.records);
       set_total_page(query.data.total_pages);
     }
   }, [query.data, set_records, set_total_page]);
 
-  return query;
+  return { ...query, is_first_loading };
 };
