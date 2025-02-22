@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 import { jwtDecode, JwtPayload } from "jwt-decode";
 import { refresh_token_fetch } from "./refresh_token_fetch";
-import { Role } from "@enums/role";
+import { Role } from "@enums/Role";
 
 type Auth = {
   token: string | null;
